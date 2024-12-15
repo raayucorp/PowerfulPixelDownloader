@@ -1,0 +1,69 @@
+{
+  "manifest_version": 2,
+  "name": "Powerful Pixiv Downloader",
+  "version": "17.2.0",
+  "description": "強大な Pixiv 一括ダウンローダー。Powerful Pixiv batch downloader. 強力な Pixiv ダウンローダー。",
+  "icons": {
+    "16": "icon/logo16.png",
+    "32": "icon/logo32.png",
+    "48": "icon/logo48.png",
+    "128": "icon/logo128.png"
+  },
+  "browser_action": {
+    "default_icon": {
+      "16": "icon/logo16.png",
+      "32": "icon/logo32.png",
+      "48": "icon/logo48.png",
+      "128": "icon/logo128.png"
+    },
+    "default_title": "Powerful Pixiv Downloader"
+  },
+  "content_scripts": [
+    {
+      "css": ["style/viewer.min.css", "style/style.css"],
+      "js": [
+        "lib/viewer.min.js",
+        "lib/whammy.js",
+        "lib/gif.js",
+        "lib/jszip-utils.min.js",
+        "lib/jszip.min.js",
+        "lib/jepub.js",
+        "lib/pako.min.js",
+        "lib/UPNG.js",
+        "js/content.js",
+        "lib/iconfont.js"
+      ],
+      "matches": ["*://www.pixiv.net/*"],
+      "run_at": "document_end",
+      "all_frames": true
+    },
+    {
+      "css": ["style/style.css"],
+      "js": ["js/content.js", "lib/iconfont.js"],
+      "matches": ["*://www.pixivision.net/*"],
+      "run_at": "document_end"
+    }
+  ],
+  "background": {
+    "scripts": ["js/background.js"]
+  },
+  "permissions": [
+    "downloads",
+    "storage",
+    "webRequest",
+    "webRequestBlocking",
+    "*://www.pixiv.net/*",
+    "*://www.pixivision.net/*",
+    "*://*.pximg.net/*",
+    "*://*.pixiv.cat/*"
+  ],
+  "web_accessible_resources": [
+    "lib/gif.worker.js",
+    "lib/listen_history_change.js",
+    "manifest.json",
+    "icon/logo128.png",
+    "style/showLargerThumbnails.css"
+  ],
+  "incognito": "spanning", 
+  "homepage_url": "https://github.com/xuejianxianzun/PixivBatchDownloader"
+}
